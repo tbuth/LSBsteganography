@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <bitset>
 #include "CImg.h"
 
@@ -10,6 +11,20 @@ using namespace std;
 char getLSB(int str){
     if (str % 2 == 0){return '0';} //str is even
     else return '1'; //str is odd
+}
+
+bool writeToFile(const string dataStr)
+{
+    ofstream myfile;
+    myfile.open ("decodedMsg.txt");
+    if (myfile.is_open()) {
+        myfile << dataStr;
+        myfile.close();
+        return true;
+    }
+
+    myfile.close();
+    return false;
 }
 
 // converts 8-bit binary representation to char representation
@@ -28,7 +43,7 @@ string binToString (string binaryRep){
 int main(int argc, char *argv[])
 {
     // check arg count
-    if (argc != 2){
+    if (argc != 3){
         cout << "Invalid number of arguments, see README for help. Exiting." << endl;
         return 0;
     }
@@ -58,6 +73,11 @@ int main(int argc, char *argv[])
 
     // convert binary string to character string & print message
     secretMessage = binToString(secretMessageBin);
-    std::cout << "Secret message: " << secretMessage << endl;
+    if (writeToFile(secretMessage) == true) {
+        cout << "Secret message is in decodedMsg.txt" << endl;
+        return 0;
+    }
+
+    cout << "Failed to decode message data\n";
     return(0);
 }
