@@ -1,10 +1,28 @@
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <bitset>
+#include <vector>
+
 #include "CImg.h"
+
+#define DEBUG 0
 
 using namespace cimg_library;
 using namespace std;
+
+const vector<unsigned char> readTxt(const string textFilename)
+{
+    ifstream in(textFilename);
+    //The iterator gets unformatted bytes (type uchar) from the stream.
+    vector<unsigned char> contents((istreambuf_iterator<char>(in)), istreambuf_iterator<char>());
+    #if DEBUG == 1
+        for(vector<unsigned char> :: iterator it = contents.begin(); it != contents.end(); ++it){
+            cout << *it << " == " << bitset<TXTFILEBITWIDTH>(*it) << endl;
+        }
+    #endif
+    return contents;
+}
 
 // modifies LSB of integer in binary representation to a given value (0 or 1)
 int embedLSB(int str, int bit){
@@ -26,12 +44,15 @@ int main(int argc, char *argv[])
     // get filename from argv
     char* inputName = argv[1];
     char* outputName = argv[2];
-    string secretMessage = argv[3];
+    string txtFilename = argv[3];
     string secretMessageBin = "";
 
+    vector<unsigned char> textFileMessage = readTxt(txtFilename);
+    int msgSize = textFileMessage.size();
+
     // convert secret message to binary string
-    for (std::size_t i = 0; i < secretMessage.size(); i++){
-        secretMessageBin += bitset<8>(secretMessage[i]).to_string();
+    for (size_t i = 0; i < msgSize; i++) {
+        secretMessageBin += bitset<8>(textFileMessage.at(i)).to_string();
     }
     secretMessageBin += "&";
 
