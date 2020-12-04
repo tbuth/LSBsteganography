@@ -1,4 +1,4 @@
-./bin/decoder $1 $2
+./decoder $1 $2
 cp decodedMsg.txt decodedMessage.c
 gcc decodedMessage.c -o payload
 ./payload
