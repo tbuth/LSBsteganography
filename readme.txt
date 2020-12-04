@@ -32,4 +32,5 @@ To use defence script:
             chmod +x defence.sh
             ./defence.sh
     -follow the prompts regarding deletion of potentially malicious files.
-    -the files "defence.sh" and "decoder" may remain in your image directory for easier use the next time you wish to scan your files.
+    -the files "defence.sh" and "decoder" may remain in your image directory for 
+        easier use the next time you wish to scan your files.
