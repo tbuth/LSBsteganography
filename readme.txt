@@ -13,18 +13,23 @@ To Run Decoder:
         secretNumber is the length of the binary encoding of the secret message (given as output by encoder)
 
 To use attack (or "extractor") script:
-    -copy "extractor.sh" and "decoder" (the binary file, not decoder.cpp) into the directory where your encoded image is stored.
-    -to run the script, enter the following command into a terminal instance (which should be operating in the same directory as stored images):
+    -copy "extractor.sh" and "decoder" (the binary file, not decoder.cpp) into 
+        the directory where your encoded image is stored.
+    -to run the script, enter the following command into a terminal instance:
         ./extractor.sh [imageFileName] [secretNumber]
             where imageFileName is the name of the encoded image and 
             secretNumber is the length of the binary encoding of the secret message (given as output by encoder)
     -the c program embedded in the image will be compiled and executed.
+    -the files "extractor.sh" and "decoder" may be deleted as to not leave any evidence.
 
 To use defence script:
-    -copy "defence.sh" and "decoder" (the binary file, not decoder.cpp) into the directory where your images are stored/downloaded to.
-    -the script may be run any time a new image is downloaded (recommended), or intermittantly at the user's discretion.
-    -to run the script, enter the following commands into a terminal instance (which should be operating in the same directory as stored images):
-        chmod +x defence.sh
-        ./defence.sh
+    -copy "defence.sh" and "decoder" (the binary file, not decoder.cpp) into 
+        the directory where your images are stored/downloaded to.
+    -the script may be run any time a new image is downloaded (recommended), or 
+        intermittantly at the user's discretion.
+    -to run the script, enter the following commands into a terminal instance (which 
+        should be operating in the same directory as stored images):
+            chmod +x defence.sh
+            ./defence.sh
     -follow the prompts regarding deletion of potentially malicious files.
     -the files "defence.sh" and "decoder" may remain in your image directory for easier use the next time you wish to scan your files.
