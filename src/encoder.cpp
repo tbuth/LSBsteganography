@@ -6,21 +6,15 @@
 
 #include "CImg.h"
 
-#define DEBUG 0
-
 using namespace cimg_library;
 using namespace std;
 
+// reads the secret message from input file
 const vector<unsigned char> readTxt(const string textFilename)
 {
     ifstream in(textFilename);
-    //The iterator gets unformatted bytes (type uchar) from the stream.
+    // iterator reads unformatted bytes (type uchar) from the stream
     vector<unsigned char> contents((istreambuf_iterator<char>(in)), istreambuf_iterator<char>());
-    #if DEBUG == 1
-        for(vector<unsigned char> :: iterator it = contents.begin(); it != contents.end(); ++it){
-            cout << *it << " == " << bitset<TXTFILEBITWIDTH>(*it) << endl;
-        }
-    #endif
     return contents;
 }
 
