@@ -13,6 +13,7 @@ char getLSB(int str){
     else return '1'; //str is odd
 }
 
+// writes a string to a text file named "decodedMsg.txt"
 bool writeToFile(const string dataStr)
 {
     ofstream myfile;
@@ -22,7 +23,6 @@ bool writeToFile(const string dataStr)
         myfile.close();
         return true;
     }
-
     myfile.close();
     return false;
 }
