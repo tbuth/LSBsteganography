@@ -1,5 +1,5 @@
 shopt -s nullglob # stops bash from throwing an error if there are no .png or .bmp files in current directory
-for f in *.{png,bmp}# iterate through .png and .bmp files in directory
+for f in *.{png,bmp} # iterate through .png and .bmp files in directory
 do
 	echo "Checking for malicious content in file - $f"
 	./decoder "$f" 480 >> /dev/null # run the decoder on f and output the first 60 characters to a text file
